@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- White background -->
+  <rect width="200" height="200" fill="white"/>
+  
+  <!-- D letter shape - outer D -->
+  <path d="M 65 35 L 65 145 L 95 145 Q 135 145 135 90 Q 135 35 95 35 Z" fill="#0d1b8e"/>
+  
+  <!-- Inner cutout to make hollow D -->
+  <path d="M 82 55 L 82 125 L 93 125 Q 115 125 115 90 Q 115 55 93 55 Z" fill="white"/>
+  
+  <!-- Small triangle notch creating the unique logo mark -->
+  <path d="M 82 90 L 105 90 L 82 115 Z" fill="white"/>
+  
+  <!-- DIGITZEE text -->
+  <text x="100" y="175" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#111111" text-anchor="middle" letter-spacing="3">DIGITZEE</text>
+</svg>
