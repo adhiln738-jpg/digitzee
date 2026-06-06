@@ -15,7 +15,78 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initStickyNav();
   initActiveNavLinks();
+  initSliders();
 });
+
+// ===== MOBILE CARD SLIDERS WITH DOT INDICATORS =====
+function initSliders() {
+  const sliders = [
+    { gridId: 'services', dotsId: 'services-dots', cardSelector: '.service-card' },
+    { gridId: 'packages', dotsId: 'packages-dots',  cardSelector: '.pkg-card'     },
+  ];
+
+  sliders.forEach(({ gridId, dotsId, cardSelector }) => {
+    const section  = document.getElementById(gridId) || document.querySelector(`#${gridId}`);
+    const grid     = section ? section.querySelector('.services-grid, .packages-grid') : null;
+    const dotsWrap = document.getElementById(dotsId);
+
+    if (!grid || !dotsWrap) return;
+
+    const cards = Array.from(grid.querySelectorAll(cardSelector));
+    if (!cards.length) return;
+
+    // Build dots
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to card ${i + 1}`);
+        dot.addEventListener('click', () => {
+          cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+    buildDots();
+
+    // Update active dot on scroll
+    let ticking = false;
+    grid.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveDot();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    function updateActiveDot() {
+      // Only active on mobile
+      if (window.innerWidth > 640) return;
+      const gridLeft  = grid.getBoundingClientRect().left;
+      const gridCX    = gridLeft + grid.offsetWidth / 2;
+      let closestIdx  = 0;
+      let closestDist = Infinity;
+
+      cards.forEach((card, i) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCX   = cardRect.left + cardRect.width / 2;
+        const dist     = Math.abs(cardCX - gridCX);
+        if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+      });
+
+      dotsWrap.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === closestIdx);
+      });
+    }
+
+    // Rebuild dots on resize (e.g. rotation)
+    window.addEventListener('resize', buildDots, { passive: true });
+  });
+}
+
 
 // ===== NAVBAR SCROLL EFFECT =====
 function initNavbar() {
@@ -84,9 +155,7 @@ function initSmoothScroll() {
       if (target) {
         e.preventDefault();
         const headerHeight = document.getElementById('header').offsetHeight;
-        const announcementBar = document.getElementById('announcement-bar');
-        const announcementHeight = announcementBar ? announcementBar.offsetHeight : 0;
-        const offset = headerHeight + (announcementHeight > 0 ? announcementHeight : 0);
+        const offset = headerHeight;
         const top = target.getBoundingClientRect().top + window.scrollY - offset - 20;
         window.scrollTo({ top, behavior: 'smooth' });
       }
@@ -358,8 +427,6 @@ document.querySelectorAll('.service-card, .pkg-card, .portfolio-card').forEach(c
   });
 });
 
-// ===== ANNOUNCEMENT BAR CLOSE =====
-// (handled inline in HTML)
 
 // ===== PARTICLE / GLOW CURSOR (DESKTOP ONLY) =====
 if (window.innerWidth > 1024) {
@@ -418,13 +485,3 @@ if ('IntersectionObserver' in window) {
   });
   lazyImages.forEach(img => imageObserver.observe(img));
 }
-
-// ===== HANDLE STICKY CTA STYLES =====
-const stickyStyle = document.createElement('style');
-stickyStyle.textContent = `
-  .sticky-mobile-cta { display: none; }
-  @media (max-width: 1024px) {
-    .sticky-mobile-cta { display: flex; }
-  }
-`;
-document.head.appendChild(stickyStyle);
