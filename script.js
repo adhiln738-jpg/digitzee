@@ -297,7 +297,30 @@ function initContactForm() {
       return;
     }
 
-    // Simulate form submission
+    // Capture values for WhatsApp
+    const businessVal = document.getElementById('business').value;
+    const businessText = businessVal ? document.getElementById('business').options[document.getElementById('business').selectedIndex].text : 'Not Specified';
+
+    const serviceVal = document.getElementById('service').value;
+    const serviceText = serviceVal ? document.getElementById('service').options[document.getElementById('service').selectedIndex].text : 'Not Specified';
+
+    const message = document.getElementById('message').value.trim();
+    const messageText = message ? message : 'No message provided.';
+
+    const waMessage = `*New DIGITZEE Enquiry*\n\n` +
+                      `👤 *Name:* ${name}\n` +
+                      `📧 *Email:* ${email}\n` +
+                      `📞 *Phone:* ${phone}\n` +
+                      `🏢 *Business Type:* ${businessText}\n` +
+                      `🛠️ *Service:* ${serviceText}\n\n` +
+                      `💬 *Message:*\n${messageText}`;
+
+    const waUrl = `https://wa.me/91889103123?text=${encodeURIComponent(waMessage)}`;
+
+    // Open WhatsApp synchronously in the event handler to prevent popup blocking
+    window.open(waUrl, '_blank');
+
+    // Simulate form submission feedback on the website
     submitBtn.disabled = true;
     submitBtn.innerHTML = `
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
