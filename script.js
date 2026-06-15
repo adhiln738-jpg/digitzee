@@ -315,7 +315,7 @@ function initContactForm() {
                       `🛠️ *Service:* ${serviceText}\n\n` +
                       `💬 *Message:*\n${messageText}`;
 
-    const waUrl = `https://wa.me/91889103123?text=${encodeURIComponent(waMessage)}`;
+    const waUrl = `https://wa.me/918891903123?text=${encodeURIComponent(waMessage)}`;
 
     // Open WhatsApp synchronously in the event handler to prevent popup blocking
     window.open(waUrl, '_blank');
