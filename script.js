@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyNav();
   initActiveNavLinks();
   initSliders();
+  initVideoPlayers();
 });
 
 // ===== MOBILE CARD SLIDERS WITH DOT INDICATORS =====
@@ -23,11 +24,12 @@ function initSliders() {
   const sliders = [
     { gridId: 'services', dotsId: 'services-dots', cardSelector: '.service-card' },
     { gridId: 'packages', dotsId: 'packages-dots',  cardSelector: '.pkg-card'     },
+    { gridId: 'videos',   dotsId: 'videos-dots',    cardSelector: '.video-card'   },
   ];
 
   sliders.forEach(({ gridId, dotsId, cardSelector }) => {
     const section  = document.getElementById(gridId) || document.querySelector(`#${gridId}`);
-    const grid     = section ? section.querySelector('.services-grid, .packages-grid') : null;
+    const grid     = section ? section.querySelector('.services-grid, .packages-grid, .video-grid') : null;
     const dotsWrap = document.getElementById(dotsId);
 
     if (!grid || !dotsWrap) return;
@@ -169,6 +171,7 @@ function initScrollAnimations() {
   const animElements = [
     '.service-card',
     '.portfolio-card',
+    '.video-card',
     '.pkg-card',
     '.benefit-card',
     '.process-step',
@@ -507,4 +510,55 @@ if ('IntersectionObserver' in window) {
     });
   });
   lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+// ===== SCROLLABLE VIDEO SHOWCASE PLAYBACK =====
+function initVideoPlayers() {
+  const cards = document.querySelectorAll('.video-card');
+  
+  cards.forEach(card => {
+    const video = card.querySelector('video');
+    const overlay = card.querySelector('.video-overlay-play');
+    const btn = card.querySelector('.play-toggle-btn');
+    
+    if (!video || !overlay) return;
+    
+    const playSvg = `<svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+    const pauseSvg = `<svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>`;
+    
+    function togglePlay(e) {
+      e.stopPropagation(); // prevent bubbling if clicking wrapper
+      
+      // Pause all other videos
+      document.querySelectorAll('.video-card').forEach(otherCard => {
+        if (otherCard !== card && otherCard.classList.contains('playing')) {
+          const otherVideo = otherCard.querySelector('video');
+          if (otherVideo) {
+            otherVideo.pause();
+            otherCard.classList.remove('playing');
+            const otherBtn = otherCard.querySelector('.play-toggle-btn');
+            if (otherBtn) otherBtn.innerHTML = playSvg;
+          }
+        }
+      });
+      
+      if (video.paused) {
+        video.play()
+          .then(() => {
+            card.classList.add('playing');
+            if (btn) btn.innerHTML = pauseSvg;
+          })
+          .catch(err => {
+            console.log('Video play failed:', err);
+          });
+      } else {
+        video.pause();
+        card.classList.remove('playing');
+        if (btn) btn.innerHTML = playSvg;
+      }
+    }
+    
+    overlay.addEventListener('click', togglePlay);
+    video.addEventListener('click', togglePlay);
+  });
 }

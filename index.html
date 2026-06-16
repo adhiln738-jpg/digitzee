@@ -6,7 +6,7 @@
   <title>DIGITZEE – Full-Service Digital Growth Agency | Shopify, Meta Ads & More</title>
   <meta name="description" content="DIGITZEE is a premium digital growth agency offering Shopify website design, e-commerce development, Meta Ads management, video editing, and social media management. Grow your brand with us." />
   <meta name="keywords" content="Shopify website design, Meta Ads management, e-commerce development, social media management, video editing, digital agency India" />
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -20,13 +20,14 @@
   <header id="header">
     <nav class="nav-container">
       <a href="#home" class="nav-logo" aria-label="DIGITZEE Home">
-        <img src="logo.svg" alt="DIGITZEE Logo" class="logo-img" />
+        <img src="logo.png" alt="DIGITZEE Logo" class="logo-img" />
         <span class="logo-text">DIGITZEE</span>
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#videos" class="nav-link">Showcase</a></li>
         <li><a href="#packages" class="nav-link">Packages</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -46,6 +47,7 @@
       <li><a href="#home" class="mobile-nav-link">Home</a></li>
       <li><a href="#services" class="mobile-nav-link">Services</a></li>
       <li><a href="#work" class="mobile-nav-link">Work</a></li>
+      <li><a href="#videos" class="mobile-nav-link">Showcase</a></li>
       <li><a href="#packages" class="mobile-nav-link">Packages</a></li>
       <li><a href="#about" class="mobile-nav-link">About</a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
@@ -363,6 +365,89 @@
           <p>Interested in a store like this for your brand?</p>
           <a href="#contact" class="btn btn-primary btn-lg" id="portfolio-cta-btn">Get Your Website Built</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== VIDEO SHOWCASE SECTION ===== -->
+    <section id="videos" class="section video-section">
+      <div class="video-bg">
+        <div class="vid-orb vid-orb-1"></div>
+      </div>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Video Showcase</div>
+          <h2 class="section-title">Videos that <span class="gradient-text">Stop the Scroll</span></h2>
+          <p class="section-sub">High-converting video edits, ad creatives, and Reels/Shorts with professional voiceovers that capture attention and drive sales.</p>
+        </div>
+        
+        <div class="video-grid">
+          
+          <div class="video-card">
+            <div class="video-player-wrap">
+              <video class="showcase-video" loop muted playsinline preload="metadata">
+                <source src="videos/video1.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-play">
+                <button class="play-toggle-btn" aria-label="Play video">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+              </div>
+              <div class="video-meta-tags">
+                <span class="v-tag">Ad Edit</span>
+                <span class="v-tag">Voiceover</span>
+              </div>
+            </div>
+            <div class="video-details">
+              <h3>E-commerce Product Showcase</h3>
+              <p>Dynamic cuts, engaging text captions, and synced beats. Perfect for Instagram Reels & TikTok Ads.</p>
+            </div>
+          </div>
+          
+          <div class="video-card">
+            <div class="video-player-wrap">
+              <video class="showcase-video" loop muted playsinline preload="metadata">
+                <source src="videos/video2.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-play">
+                <button class="play-toggle-btn" aria-label="Play video">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+              </div>
+              <div class="video-meta-tags">
+                <span class="v-tag">Reels</span>
+                <span class="v-tag">Engagement</span>
+              </div>
+            </div>
+            <div class="video-details">
+              <h3>Brand Narrative & Promotion</h3>
+              <p>Cinematic overlays, professional color grading, and crisp voiceover to tell your brand story.</p>
+            </div>
+          </div>
+          
+          <div class="video-card">
+            <div class="video-player-wrap">
+              <video class="showcase-video" loop muted playsinline preload="metadata">
+                <source src="videos/video3.mp4" type="video/mp4">
+              </video>
+              <div class="video-overlay-play">
+                <button class="play-toggle-btn" aria-label="Play video">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+              </div>
+              <div class="video-meta-tags">
+                <span class="v-tag">UGC Ad</span>
+                <span class="v-tag">High-ROAS</span>
+              </div>
+            </div>
+            <div class="video-details">
+              <h3>User Generated Content (UGC) Edit</h3>
+              <p>Authentic visual hook, native captions, and strong CTA built for conversion on Meta and TikTok ads.</p>
+            </div>
+          </div>
+          
+        </div>
+        <!-- Mobile slider dots -->
+        <div class="slider-dots" id="videos-dots"></div>
       </div>
     </section>
 
@@ -717,7 +802,7 @@
             <div class="contact-info-items">
               <div class="contact-info-item">
                 <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg>
-                <span>hello@digitzee.in</span>
+                <span>digitzee24@gmail.com</span>
               </div>
               <div class="contact-info-item">
                 <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.28-1.28a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/></svg>
@@ -793,7 +878,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="logo.svg" alt="DIGITZEE Logo" class="footer-logo-img" />
+            <img src="logo.png" alt="DIGITZEE Logo" class="footer-logo-img" />
             <span class="footer-logo-text">DIGITZEE</span>
           </div>
           <p class="footer-tagline">Your full-service digital growth agency. Websites, ads, and content that drive real business results.</p>
@@ -818,6 +903,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Our Work</a></li>
+            <li><a href="#videos">Showcase</a></li>
             <li><a href="#packages">Packages</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -843,6 +929,10 @@
             <li>
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.28-1.28a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/></svg>
               <a href="tel:+918078116777">+91 80781 16777</a>
+            </li>
+            <li>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg>
+              <a href="mailto:digitzee24@gmail.com">digitzee24@gmail.com</a>
             </li>
             <li>
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
